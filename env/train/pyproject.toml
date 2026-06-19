@@ -1,0 +1,140 @@
+[tool.poetry]
+name = "eLVEF"
+version = "0.2.3"
+description = "eLVEF"
+authors = []
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.11"
+typer = "^0.4.0"
+torch = {url = "https://download.pytorch.org/whl/cu118/torch-2.2.0%2Bcu118-cp39-cp39-linux_x86_64.whl", optional = true}
+torchvision = {url = "https://download.pytorch.org/whl/cu118/torchvision-0.17.0%2Bcu118-cp39-cp39-linux_x86_64.whl", optional = true}
+torchaudio = { url = "https://download.pytorch.org/whl/cu118/torchaudio-2.2.0%2Bcu118-cp39-cp39-linux_x86_64.whl" }
+
+omegaconf = "2.0.6"
+numpy = "1.23.5"
+SoundFile = "^0.10.3"
+iterative-stratification = {version = "^0.1.7", optional = true}
+audiomentations = {extras = ["extras"], version = "^0.24.0", optional = true}
+# fastprogress = {version = "^1.0.2", optional = true}
+# ray = {version = "2.8.0", extras = ["tune"], optional = true}
+# optuna = {version = "^2.10.0", optional = true}
+click = "8.0.4"
+# mlflow = {extras = ["extras"], version = "^1.28.0", optional = true}
+# timm = {version = "^0.6.7", optional = true}
+# wavelets-pytorch = {git = "https://github.com/ar4/PyTorchWavelets.git", rev = "43c708d6173d3804dbc32c819fe25695fed0b737"}
+urllib3 = "<2"  # https://github.com/orgs/python-poetry/discussions/7937
+matplotlib = "3.7.0"
+pandas = "1.5.3"
+setuptools = "59.5.0"
+# bitarray = "^2.9.2"
+# sacrebleu = "^2.4.2"
+# chardet = "^5.2.0"
+# tableone = "0.7.10"
+# forestplot = "^0.4.1"
+grad-cam = {version = "^1.5.4", optional = true}
+seaborn = {version = "^0.13.1", optional = true}
+fairseq = {version = "^0.12.2", optional = true}
+
+scikit-learn = "1.6.1"
+python-stretch = "^0.3.1"
+sympy = "1.14.0"
+tensorboard = "^2.20.0"
+tensorboardx = "^2.6.5"
+neurokit2 = "^0.1.6"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^6.2.5"
+pytest-sugar = "^0.9.4"
+pytest-mock = "^3.6.1"
+coverage-badge = "^1.1.0"
+black = "^21.12b0"
+isort = "^5.10.1"
+mypy = "^1.7.0"
+mkdocs = "^1.2.3"
+mkdocstrings = "^0.17.0"
+mkdocs-material = "^8.1.8"
+pylint = "^2.12.2"
+deepdiff = "^5.7.0"
+mkdocs-gen-files = "^0.3.4"
+mkdocs-literate-nav = "^0.4.1"
+mkdocs-section-index = "^0.3.3"
+Jinja2 = "<3.1"
+pytest-xdist = "^3.5.0"
+pytest-cov = "4.1.0"
+
+
+[tool.poetry.extras]
+extra_libraries = ["iterative-stratification", "audiomentations", "fastprogress", "dvc", "ray", "optuna", "mlflow", "statsmodels", "seaborn"]
+gpu = ["torch", "fairseq", "grad-cam", "torchaudio"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pylint.messages_control]
+disable = "C0114, C0301, W1202, C0209, W1203, R0914, R0912, C0302, R0915, E1101"
+[tool.pylint.format]
+max-line-length = "88"
+
+[tool.black]
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+# mypy global options:
+[tool.mypy]
+python_version = "3.9"
+
+# mypy per-module options:
+[[tool.mypy.overrides]]
+module = [
+    "_io.*",
+    "colorama.*",
+    "tabulate.*",
+    "sklearn.metrics",
+    "audiomentations.*",
+    "iterstrat.*",
+    "sklearn.*",
+    "scipy.*",
+    "fastprogress.fastprogress.*",
+    "soundfile.*",
+    "matplotlib.*",
+    "timm.*",
+    "mlflow.*",
+    "pandas.*",
+    "wavelets_pytorch.*",
+    "pywt.*",
+    "PIL.*",
+    "wavelets.*",
+    "pydub.*",
+    "seaborn.*",
+    "fairseq.*",
+    "joblib.*",
+    "wfdb.*",
+    "hydra.*",
+    "fairseq_cli.*",
+    "tableone.*",
+    "japanize_matplotlib.*",
+    "resampy.*",
+    "rich.*",
+    "pytorch_grad_cam.*",
+    "forestplot.*",
+    "py7zr.*",
+    "librosa.*",
+    "python_stretch.*",
+    "textalloc.*",
+    "neurokit2.*",
+]
+ignore_missing_imports = true
