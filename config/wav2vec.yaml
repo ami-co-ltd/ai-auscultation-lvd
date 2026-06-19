@@ -1,0 +1,29 @@
+
+
+
+models_ssl:
+  encoder_layers: 16
+  # encoder_layers: 1
+
+  dropout: 0.0
+  attention_dropout: 0.0
+  activation_dropout: 0.1
+  dropout_features: 0.1
+  final_dim: 512
+  conv_feature_layers: "[(256, 5, 2)] + [(512, 3, 2)] * 3 + [(512,2,2)] + [(512,2,2)]"
+  # conv_feature_layers: "[(32, 5, 2), (32, 5, 2), (32, 5, 2), (32, 5, 2)]"
+  quantize_targets: true
+  mask_prob: 0.5
+
+
+models_ft:
+
+  activation_dropout: 0.1
+  freeze_finetune_updates: 500
+  feature_grad_mult: 1.0
+  mlp_layers: 4
+  use_msd: false
+  tgt_layer: 4
+
+  
+

@@ -1,0 +1,37 @@
+model:
+  encoder:
+    encoder_type: effnet1d
+    input_channel: 1
+    width_coefficient: 1.0
+    depth_coefficient: 1.0
+    depth_divisor: 8
+    dropout_rate: 0.2
+    stem_output_channels: 64
+    stem_kernel_size: 15
+    stem_stride_size: 4
+    block_args:
+      - r3_k9_s2_e2_i64_o128_se0.25
+      - r3_k9_s2_e2_i128_o256_se0.25
+      - r2_k9_s2_e2_i256_o256_se0.25
+      - r2_k5_s2_e2_i256_o512_se0.25
+      - r2_k5_s2_e2_i512_o512_se0.25
+    activation_function_name: mish
+  decoder:
+    decoder_type: attention_pooling
+    hidden_dim: 1024
+    attention:
+      n_headers: 4
+      dropout_rate: 0.0
+    n_layers: 4
+    activation_function_name: mish
+    mixup:
+      can_apply: True
+      alpha: 0.5
+      can_concat_original: False
+      layer_index: 5
+  last_activation_function_name: sigmoid
+inference:
+  test_time_augmentation:
+    n_expand: 16
+    apply_dropout: True
+    stride: random
