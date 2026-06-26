@@ -1,7 +1,15 @@
 
-
 # Overview
-- This repository contains the source code utilized in the paper, "Artificial Intelligence–Enhanced Auscultation to Identify Left Ventricular Dysfunction: Development and external validation in prospective multicenter studies".
+This repository provides non-proprietary analysis code, model-architecture definitions, configuration files, and selected model-development scripts associated with the study, "Artificial Intelligence–Enhanced Auscultation to Identify Left Ventricular Dysfunction: Development and External Validation in Prospective Multicenter Studies."
+
+# Repository scope
+- This repository is intended to support methodological transparency.
+- It includes code illustrating the model-development, inference, ECG-feature extraction, model ensemble, and statistical-analysis workflows. 
+- Because the original patient-level physiological recordings and trained model weights cannot be released, the provided training and inference scripts use dummy data and randomly initialized models to demonstrate the workflow and expected file structure. 
+- The repository is therefore not intended to directly reproduce the reported AUROC or other study results without access to the original data and trained model weights.
+
+# Not included
+- This repository does not include raw patient-level recordings, trained model weights, proprietary preprocessing code, production configuration files, or the complete device-specific inference pipeline.
 
 # Installation
 Execute the following commands to initialize and launch the Docker container:
@@ -97,7 +105,9 @@ Scripts for creating and running inference with dummy models are stored in the `
 - The R analysis environment is specified in renv.lock. Third-party R packages are not included in this repository and retain their respective licenses. Users installing the R environment via renv::restore() are responsible for complying with the licenses of those third-party packages. See THIRD_PARTY_NOTICES.md for a summary of major third-party dependencies.
 
 # Citation
-- TBD
-
+If you use this repository, please cite:
+```
+Sato et al. Artificial Intelligence–Enhanced Auscultation to Identify Left Ventricular Dysfunction: Development and External Validation in Prospective Multicenter Studies. [Journal/status to be updated].
+```
 
 
